@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <defs>
+    <radialGradient id="ripple-grad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4F8CFF" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Static concentric circles — animation is applied via CSS class .pulse-circle -->
+  <circle class="pulse-circle" cx="200" cy="200" r="60"  stroke="#4F8CFF" stroke-opacity="0.14" stroke-width="1" fill="none"/>
+  <circle class="pulse-circle" cx="200" cy="200" r="100" stroke="#6B74FB" stroke-opacity="0.10" stroke-width="1" fill="none"/>
+  <circle class="pulse-circle" cx="200" cy="200" r="140" stroke="#8B5CF6" stroke-opacity="0.07" stroke-width="1" fill="none"/>
+  <circle class="pulse-circle" cx="200" cy="200" r="180" stroke="#8B5CF6" stroke-opacity="0.04" stroke-width="1" fill="none"/>
+</svg>
