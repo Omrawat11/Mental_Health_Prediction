@@ -9,6 +9,9 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from pathlib import Path
 
+import warnings
+warnings.filterwarnings('ignore', category=UserWarning)
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 model = joblib.load(BASE_DIR / 'Mental_Health_Model.pkl')
