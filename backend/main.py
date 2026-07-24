@@ -7,7 +7,11 @@ import pandas as pd
 from typing import Literal
 from fastapi.middleware.cors import CORSMiddleware
 
-model = joblib.load('Mental_Health_Model.pkl')
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+model = joblib.load(BASE_DIR / 'Mental_Health_Model.pkl')
 top_countries = ['Other','India','USA','Canada','UK','Australia','Germany','Mexico','Turkey','France']
 
 app = FastAPI()
@@ -21,7 +25,7 @@ app.add_middleware(
 )
 
 # Serve static assets (CSS, JS, SVGs)
-app.mount('/assets', StaticFiles(directory='frontend/assets'), name='assets')
+app.mount('/assets', StaticFiles(directory=BASE_DIR / 'frontend' / 'assets'), name='assets')
 
 # first pydantic model
 class StudentData(BaseModel):
@@ -45,15 +49,15 @@ class predictionResponse(BaseModel):
 
 @app.get('/')
 def serve_frontend():
-    return FileResponse('frontend/index.html')
+    return FileResponse(BASE_DIR / 'frontend' / 'index.html')
 
 @app.get('/style.css')
 def serve_css():
-    return FileResponse('frontend/style.css', media_type='text/css')
+    return FileResponse(BASE_DIR / 'frontend' / 'style.css', media_type='text/css')
 
 @app.get('/script.js')
 def serve_js():
-    return FileResponse('frontend/script.js', media_type='application/javascript')
+    return FileResponse(BASE_DIR / 'frontend' / 'script.js', media_type='application/javascript')
 
 
 @app.post('/predict',response_model=predictionResponse)
